@@ -17,7 +17,8 @@ export default function FormInput({
     <div>
       <input
         name={name}
-        className="h-10 p-2 w-full rounded-full border-neutral-100 bg-transparent ring-1 ring-neutral-200 transition-colors duration-100 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-300 ring-offset-2"
+        className={`h-10 p-2 w-full rounded-full border-neutral-100 bg-transparent ring-1 ring-neutral-200 transition-colors duration-100 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-300 ring-offset-2 
+          ${errors.length !== 0 ? "focus:ring-red-500" : ""}`}
         type={type}
         placeholder={placeholder}
         required={required}

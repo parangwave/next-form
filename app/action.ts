@@ -2,16 +2,24 @@
 
 import { z } from "zod";
 
+import {
+  EMAIL_REGEX,
+  EMAIL_REGEX_ERROR,
+  USERNAME_MIN_LENGTH,
+  USERNAME_MIN_ERROR,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_MIN_ERROR,
+  PASSWORD_REGEX,
+  PASSWORD_REGEX_ERROR,
+} from "@/lib/constants";
+
 const schema = z.object({
-  email: z
-    .string()
-    .email()
-    .regex(/@zod\.com$/, "Only @zod.com emails are allowed"),
-  username: z.string().min(5, "Username should be at least 5 characters long"),
+  email: z.string().email().regex(EMAIL_REGEX, EMAIL_REGEX_ERROR),
+  username: z.string().min(USERNAME_MIN_LENGTH, USERNAME_MIN_ERROR),
   password: z
     .string()
-    .min(10, "Password should be at least 10 characters long")
-    .regex(/\d/, "Password should contain at least one number (0123456789)"),
+    .min(PASSWORD_MIN_LENGTH, PASSWORD_MIN_ERROR)
+    .regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR),
 });
 
 export async function handleForm(prevState: any, formData: FormData) {

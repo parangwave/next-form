@@ -18,21 +18,27 @@ export default function Home() {
           type="email"
           placeholder="Email"
           required
-          errors={[]}
+          errors={
+            state?.errors?.filter((error) => error.includes("email")) ?? []
+          }
         />
         <FormInput
           name="username"
           type="username"
           placeholder="Username"
           required
-          errors={[]}
+          errors={
+            state?.errors?.filter((error) => error.includes("Username")) ?? []
+          }
         />
         <FormInput
           name="password"
           type="password"
           placeholder="Password"
           required
-          errors={state?.errors ?? []}
+          errors={
+            state?.errors?.filter((error) => error.includes("Password")) ?? []
+          }
         />
         <FormButton text="Login" />
         {state?.success && (

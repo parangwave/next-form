@@ -15,19 +15,27 @@ const schema = z.object({
 });
 
 export async function handleForm(prevState: any, formData: FormData) {
-  const password = formData.get("password");
+  const email = formData.get("email") as string;
+  const username = formData.get("username") as string;
+  const password = formData.get("password") as string;
 
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  try {
+    schema.parse({ email, username, password });
 
-  if (password === "12345") {
     return {
       success: true,
       errors: [],
     };
-  } else {
+  } catch (e) {
+    if (e instanceof z.ZodError) {
+      return {
+        success: false,
+        errors: e.errors.map((error) => error.message),
+      };
+    }
     return {
       success: false,
-      errors: ["Wrong password"],
+      errors: ["An unknown error occurred"],
     };
   }
 }

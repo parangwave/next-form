@@ -32,5 +32,4 @@ model Tweet {
   updated_at DateTime @updatedAt
   userId     Int
   user       User     @relation(fields: [userId], references: [id])
-  likes      Like[]
 }

@@ -14,27 +14,33 @@ datasource db {
 }
 
 model User {
-  id         Int        @id @default(autoincrement())
-  username   String     @unique
-  password   String
-  email      String     @unique
-  bio        String?
-  created_at DateTime   @default(now())
-  updated_at DateTime   @updatedAt
-  tweets     Tweet[]
-  likes      Like[]
-  Response   Response[]
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  email    String  @unique
+  bio      String?
+  avatar   String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  tweets   Tweet[]
+  likes    Like[]
+  Response Response[]
 }
 
 model Tweet {
-  id         Int        @id @default(autoincrement())
-  tweet      String
-  created_at DateTime   @default(now())
-  updated_at DateTime   @updatedAt
-  userId     Int
-  user       User       @relation(fields: [userId], references: [id])
-  likes      Like[]
-  Response   Response[]
+  id    Int    @id @default(autoincrement())
+  tweet String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  likes    Like[]
+  Response Response[]
 }
 
 model Like {
@@ -50,9 +56,9 @@ model Like {
 }
 
 model Response {
-  id Int @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
+  response String
 
-  response   String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 

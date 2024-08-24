@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Tweet } from "@prisma/client";
 import getSession from "@/lib/session";
 import db from "@/lib/db";
-import AddTweet from "@/app/components/AddTweet";
+import AddTweet from "@/components/AddTweet";
 
 export default async function Home() {
   const pageSize = 3;

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getTweetDetails } from "../../../(main)/actions";
-import { getresponses as getResponses, getUser } from "@/app/(auth)/actions";
+import { getResponses, getUser } from "@/app/(auth)/actions";
 import Tweet from "@/components/Tweet";
 import ResponseList from "@/components/ResponseList";
 import AddResponse from "@/components/AddResponse";
@@ -20,10 +20,12 @@ export default async function TweetDetail({
   if (!tweet) {
     return notFound();
   }
+
   const user = await getUser();
   if (!user) {
     return notFound();
   }
+
   const responses = await getResponses(tweet.id);
   if (!responses) {
     return notFound();
@@ -42,7 +44,7 @@ export default async function TweetDetail({
             responses: tweet._count.responses,
           }}
         />
-        <ResponseList userId={user.id} responses={responses} />
+        <ResponseList id={id} userId={user.id} responses={responses} />
       </div>
 
       <AddResponse id={id} />

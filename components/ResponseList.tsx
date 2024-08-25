@@ -5,6 +5,7 @@ import { Response } from "./Response";
 import { ResponseProps } from "@/lib/types";
 
 export default function ResponseList({
+  id,
   userId,
   responses,
 }: {

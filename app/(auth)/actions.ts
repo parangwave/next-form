@@ -62,7 +62,7 @@ export async function getTweet(id: number) {
 }
 
 /* 트윗별 댓글 */
-export async function getresponses(tweetId: number) {
+export async function getResponses(tweetId: number) {
   const responses = await db.response.findMany({
     where: {
       tweetId: tweetId,

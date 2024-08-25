@@ -108,7 +108,7 @@ export default function TweetList({
                 created_at={tweet.created_at}
                 _count={{
                   likes: tweet._count.likes,
-                  comments: tweet._count.comments,
+                  responses: tweet._count.responses,
                 }}
               />
             </Link>

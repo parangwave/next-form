@@ -6,7 +6,6 @@ import { getInitialMyTweets } from "./actions";
 import { Prisma } from "@prisma/client";
 import UserAvatar from "@/components/Avatar";
 import NotFoundPage from "@/app/not-found";
-import { redirect } from "next/navigation";
 
 export type InitialTweets = Prisma.PromiseReturnType<typeof getInitialMyTweets>;
 
@@ -35,7 +34,7 @@ export default async function UserPage() {
 
         <button
           className="absolute right-5 flex items-center gap-1 text-slate-400 text-xs border p-2"
-          onClick={handleLogOut}
+          onClick={logOut}
         >
           로그아웃
         </button>

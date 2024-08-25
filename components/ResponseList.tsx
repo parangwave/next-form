@@ -4,7 +4,7 @@ import { deleteResponse } from "@/app/(home)/(tabs)/tweets/[id]/actions";
 import { Response } from "./Response";
 import { ResponseProps } from "@/lib/types";
 
-export default function responseList({
+export default function ResponseList({
   userId,
   responses,
 }: {
@@ -24,7 +24,7 @@ export default function responseList({
               id={response.id}
               user={response.user}
               created_at={response.created_at}
-              response={response.payload}
+              response={response.response}
               userId={userId}
               responseDelete={deleteResponse}
             />

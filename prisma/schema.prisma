@@ -24,9 +24,9 @@ model User {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  tweets   Tweet[]
-  likes    Like[]
-  Response Response[]
+  tweets    Tweet[]
+  likes     Like[]
+  responses Response[]
 }
 
 model Tweet {
@@ -39,8 +39,8 @@ model Tweet {
   userId Int
   user   User @relation(fields: [userId], references: [id])
 
-  likes    Like[]
-  Response Response[]
+  likes     Like[]
+  responses Response[]
 }
 
 model Like {

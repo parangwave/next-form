@@ -41,6 +41,7 @@ export interface LikeProps {
 }
 
 export interface ResponseProps {
+  response: string;
   user: {
     id: number;
     username: string;

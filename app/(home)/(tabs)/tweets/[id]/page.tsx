@@ -1,39 +1,51 @@
-import { Tweet } from "@prisma/client";
-import db from "@/lib/db";
-import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getTweetDetails } from "../../../(main)/actions";
+import { getresponses as getResponses, getUser } from "@/app/(auth)/actions";
+import Tweet from "@/components/Tweet";
+import ResponseList from "@/components/ResponseList";
+import AddResponse from "@/components/AddResponse";
+import { formatToMaxLength } from "@/lib/utils";
 
-export default async function Home({ params }: { params: { id: string } }) {
-  async function getTweet(id: number): Promise<Tweet | null> {
-    "use server";
-    return await db.tweet.findUnique({
-      where: {
-        id,
-      },
-    });
+export default async function TweetDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const id = Number(params.id);
+  if (isNaN(id)) {
+    return notFound();
   }
 
-  const tweet = await getTweet(Number(params.id));
+  const tweet = await getTweetDetails(id);
+  if (!tweet) {
+    return notFound();
+  }
+  const user = await getUser();
+  if (!user) {
+    return notFound();
+  }
+  const responses = await getResponses(tweet.id);
+  if (!responses) {
+    return notFound();
+  }
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center gap-3 ">
-      <div className="flex justify-start  w-1/4">
-        <div className="flex justify-between items-center w-full">
-          <Link href="/" className="pl-4">
-            ⬅️ Back
-          </Link>
-          <h1 className="text-center flex-1">Tweet Detail</h1>
-          <div className="pl-4 invisible">⬅️ Back</div>
-        </div>
+    <>
+      <div className="detail-inner">
+        <Tweet
+          id={tweet.id}
+          tweet={formatToMaxLength(tweet.tweet, 170)}
+          user={tweet.user}
+          created_at={tweet.created_at}
+          _count={{
+            likes: tweet._count.likes,
+            responses: tweet._count.responses,
+          }}
+        />
+        <ResponseList userId={user.id} responses={responses} />
       </div>
 
-      {tweet ? (
-        <div className="flex justify-between border w-1/4 p-3">
-          <span>{tweet.tweet}</span>
-          <span>written by: {tweet.userId}</span>
-        </div>
-      ) : (
-        <div>no tweet found</div>
-      )}
-    </div>
+      <AddResponse id={id} />
+    </>
   );
 }

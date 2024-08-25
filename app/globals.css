@@ -2,32 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --color-dark: #252527;
+    --color-rose: #f7467b;
+
+    --device-width: 393px;
+    --device-height: 852px;
+    --header-height: 56px;
+    --tab-height: 64px;
+    --tweets-inner-height: calc(
+      (var(--device-height) - (var(--header-height)) - (var(--tab-height)))
+    );
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    color: var(--color-dark);
+    background: #151d23;
+    font-size: 14px;
+  }
+  textarea,
+  input {
+    outline: none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #fafafa inset !important;
+    -webkit-text-fill-color: var(--color-dark);
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  textarea {
+    resize: none;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+@layer components {
+  .wrapper {
+    @apply flex items-center justify-center w-screen h-screen m-auto;
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .device {
+    @apply flex flex-col justify-between overflow-y-auto;
+    width: var(--device-width);
+    height: var(--device-height);
+  }
+
+  .device-inner {
+    @apply relative overflow-y-auto;
+    height: var(--tweets-inner-height);
+  }
+
+  .detail-inner {
+    @apply overflow-y-auto;
+    height: calc(
+      var(--device-height) - var(--tab-height) - var(--header-height) - 50px
+    );
+  }
+
+  .title-box {
+    @apply flex flex-col gap-2;
   }
 }

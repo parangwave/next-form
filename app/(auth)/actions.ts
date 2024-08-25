@@ -77,6 +77,7 @@ export async function getResponses(tweetId: number) {
           id: true,
           username: true,
           email: true,
+          avatar: true,
         },
       },
       tweet: {

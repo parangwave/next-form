@@ -4,64 +4,6 @@ import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
 
-export interface UserProps {
-  id: number;
-  username: string;
-  password: string;
-  email: string;
-  avatar?: string;
-  bio: string | null;
-  created_at: Date;
-  updated_at: Date;
-
-  tweets: {
-    user: {
-      id: number;
-    };
-  };
-}
-
-export interface TweetProps {
-  user: {
-    id: number;
-    username: string;
-    avatar?: string;
-  };
-
-  id: number;
-  created_at: Date;
-  updated_at: Date;
-
-  likes: {
-    user: {
-      id: number;
-      username: string;
-      created_at: Date;
-      updated_at: Date;
-    };
-  }[];
-
-  tweet: string;
-}
-
-export interface responseProps {
-  user: {
-    id: number;
-    username: string;
-    avatar?: string;
-  };
-
-  tweet: {
-    userId: number;
-    id: number;
-  };
-
-  id: number;
-  created_at: Date;
-  updated_at: Date;
-  payload: string;
-}
-
 /* 사용자 */
 export async function getUser() {
   const session = await getSession();
@@ -127,6 +69,7 @@ export async function getresponses(tweetId: number) {
     },
     select: {
       id: true,
+      response: true,
       created_at: true,
       updated_at: true,
       user: {

@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 
 interface SessionContent {
   id?: number;
+  username?: string;
 }
 
 export default function getSession() {
   return getIronSession<SessionContent>(cookies(), {
-    cookieName: "delicious-karrot",
+    cookieName: "delicious-tweet",
     password: process.env.COOKIE_PASSWORD!,
   });
 }

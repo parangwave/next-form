@@ -2,6 +2,7 @@
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import db from "@/lib/db";
+import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
 
 const checkUniqueUsername = async (username: string) => {

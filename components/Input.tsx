@@ -32,7 +32,7 @@ const _Input = (
   return (
     <>
       <label
-        className={`relative flex items-center gap-4 my-1 mt-3 ${className}`}
+        className={`relative flex items-center justify-center w-full gap-4 my-1 mt-3 ${className}`}
       >
         {icon}
         <input

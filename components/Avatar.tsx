@@ -23,7 +23,7 @@ export default function UserAvatar({
         alt={alt}
         width={width}
         height={height}
-        className={`overflow-hidden rounded-full border border-zinc-300 ${className}`}
+        className={`overflow-hidden rounded-full border border-slate-300 ${className}`}
       />
     </>
   );

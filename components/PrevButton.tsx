@@ -8,7 +8,7 @@ interface ButtonProps {
 }
 
 export default function PrevButton({
-  children = <ArrowLeftIcon className="size-28" />,
+  children = <ArrowLeftIcon className="size-10" />,
   className,
 }: ButtonProps) {
   const handleClick = () => {

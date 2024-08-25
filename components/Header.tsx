@@ -47,7 +47,7 @@ export default function Header() {
 
   const updatedIcon = basePathItems
     .filter((item) => item.label === "추가")
-    .map((item) => <XMarkIcon key={item.href} className="size-28" />);
+    .map((item) => <XMarkIcon key={item.href} className="size-10" />);
 
   return (
     <div className="relative flex items-center justify-center min-h-14 px-3 bg-slate-100">

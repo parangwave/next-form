@@ -122,13 +122,13 @@ export default function TweetList({
           className="absolute bottom-4 right-5 rounded-lg border border-slate-400 bg-slate-50 p-[10px] text-slate-400"
           aria-label="Scroll to top"
         >
-          <ArrowUpIcon className="size-20" />
+          <ArrowUpIcon className="size-5" />
         </button>
       )}
 
       {isLoading && (
         <span className="flex h-8 items-start justify-center bg-slate-200 text-center">
-          <ArrowPathIcon className="size-20 animate-spin" />
+          <ArrowPathIcon className="size-5 animate-spin" />
         </span>
       )}
     </div>

@@ -104,7 +104,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
     <form action={onValid} className="flex flex-col gap-2">
       <label
         htmlFor="avatar"
-        className="relative flex flex-col self-center items-center justify-center gap-1 size-28 bg-cover border border-zinc-300 rounded-full overflow-hidden cursor-pointer"
+        className="relative flex flex-col self-center items-center justify-center gap-1 size-10 bg-cover border border-slate-300 rounded-full overflow-hidden cursor-pointer"
         style={{
           backgroundImage: `url(${preview})`,
         }}
@@ -138,7 +138,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
         placeholder={userInfo?.username}
         {...register("username")}
         errors={errors.username?.message ? [errors.username.message] : []}
-        icon={<UserIconLine className="absolute left-3 size-16" />}
+        icon={<UserIconLine className="absolute left-3 size-5" />}
       />
 
       <Input
@@ -146,7 +146,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
         placeholder={userInfo?.email ? userInfo.email : "이메일을 추가해주세요"}
         {...register("email")}
         errors={errors.email?.message ? [errors.email.message] : []}
-        icon={<EnvelopeIconLine className="absolute left-3 size-16" />}
+        icon={<EnvelopeIconLine className="absolute left-3 size-5" />}
       />
 
       <Input
@@ -156,7 +156,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
         }
         {...register("bio")}
         errors={errors.bio?.message ? [errors.bio.message] : []}
-        icon={<FaceSmileIconLine className="absolute left-3 size-16" />}
+        icon={<FaceSmileIconLine className="absolute left-3 size-5" />}
       />
 
       <Input
@@ -164,7 +164,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
         placeholder="기존 비밀번호를 입력해주세요"
         {...register("password")}
         errors={errors.password?.message ? [errors.password.message] : []}
-        icon={<LockClosedIconLine className="absolute left-3 size-16" />}
+        icon={<LockClosedIconLine className="absolute left-3 size-5" />}
       />
 
       <Input
@@ -174,7 +174,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
         errors={
           errors.new_password?.message ? [errors.new_password.message] : []
         }
-        icon={<KeyIconLine className="absolute left-3 size-16" />}
+        icon={<KeyIconLine className="absolute left-3 size-5" />}
       />
 
       <Input
@@ -186,7 +186,7 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
             ? [errors.confirm_password.message]
             : []
         }
-        icon={<KeyIconLine className="absolute left-3 size-16" />}
+        icon={<KeyIconLine className="absolute left-3 size-5" />}
       />
 
       <Button text="저장"></Button>

@@ -32,7 +32,7 @@ function SearchInputForm({ onSearch }: SearchInputProps) {
           value={searchValue}
           onChange={(e) => setSearchValue(e.currentTarget.value)}
           className="w-full"
-          icon={<MagnifyingGlassIcon className="absolute left-3 size-16" />}
+          icon={<MagnifyingGlassIcon className="absolute left-3 size-5" />}
         />
         <Button text={"검색"}></Button>
       </form>

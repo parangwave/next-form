@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 // email
 export const EMAIL_REGEX = new RegExp(/@zod\.com$/);
 export const EMAIL_REGEX_ERROR = "Only @zod.com emails are allowed";

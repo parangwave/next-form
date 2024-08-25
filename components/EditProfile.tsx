@@ -5,10 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { UserInfo } from "@/app/(home)/(tabs)/users/[id]/edit/page";
 import {
-  getUploadUrl,
   updateUserProfile,
   userSchema,
-} from "@/app/(home)/(tabs)/users/[id]/edit/action";
+} from "@/app/(home)/(tabs)/users/[id]/edit/actions";
 import {
   EnvelopeIcon as EnvelopeIconLine,
   KeyIcon as KeyIconLine,
@@ -66,12 +65,6 @@ export default function EditProfile({ userInfo }: FormEditProfileProps) {
     const url = URL.createObjectURL(file);
     setPreview(url);
     setFile(file);
-    const { success, result } = await getUploadUrl();
-    if (success) {
-      const { id, uploadURL } = result;
-      setUploadUrl(uploadURL);
-      setValue("avatar", `https://imagedelivery.net/ssss/${id}`);
-    }
   };
 
   // 저장
